@@ -119,17 +119,18 @@
 
 <details>
 <summary> главная страница </summary>
-
+<img width="960" height="305" alt="1" src="https://github.com/user-attachments/assets/cb43ecf6-8779-40f6-af01-693b6d027b95" />
 </details>
 
 <details>
 <summary> регистрация/вход </summary>
-
+<img width="213" height="140" alt="4" src="https://github.com/user-attachments/assets/b1f2781f-f67a-4c4b-9cc0-c4ac82ecad1c" />
+<img width="271" height="311" alt="3" src="https://github.com/user-attachments/assets/4e320bf7-b106-473a-a7b1-a31a506f083c" />
 </details>
 
 <details>
 <summary> добавить карточку </summary>
-
+<img width="323.5" height="401" alt="2" src="https://github.com/user-attachments/assets/1ba24bf5-dafa-43cf-8111-ffeffacaf57c" />
 </details>
 
 ## Запуск проекта
@@ -150,18 +151,4 @@ python manage.py runserver
 ```
 
 Затем открыть в браузере `http://127.0.0.1:8000/`.
-
-Файл `requirements.txt` содержит список необходимых Python-библиотек и позволяет установить их одной командой. Каталог `.venv` используется для хранения локального виртуального окружения.
-
----
-
-## Замечания
-
-* В настройках включён `DEBUG = True`; перед публикацией сайта это необходимо изменить.
-* В настройках присутствует встроенный секретный ключ; для развёртывания его следует хранить вне исходного кода.
-* Названия модели и части шаблонов сохранились от предыдущих версий проекта.
-* `README.md` не содержит полной инструкции по установке.
-* В архиве есть готовая база данных и изображения для записей.
-
 </details>
-
