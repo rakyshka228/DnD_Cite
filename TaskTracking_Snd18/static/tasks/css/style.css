@@ -1,0 +1,86 @@
+:root {
+  --accent-color: #6d28d9;
+  --bg-color: #111827;
+  --panel-color: #1f2937;
+  --text-color: #f9fafb;
+  --muted-color: #9ca3af;
+}
+
+body {
+  background: linear-gradient(135deg, #0f172a, var(--bg-color));
+  color: var(--text-color);
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+.navbar {
+  background: rgba(15, 23, 42, 0.95);
+  border-bottom: 2px solid var(--accent-color);
+}
+
+.navbar-brand, .nav-link {
+  color: var(--text-color) !important;
+}
+
+.card {
+  background: var(--panel-color);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 1rem;
+  color: var(--text-color);
+}
+
+.btn-primary {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: white !important;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: color-mix(in srgb, var(--accent-color) 85%, black);
+  border-color: color-mix(in srgb, var(--accent-color) 85%, black);
+  color: white !important;
+}
+
+.btn-outline-secondary {
+  color: var(--text-color);
+  border-color: var(--accent-color);
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.form-label, label {
+  color: var(--text-color);
+}
+
+.form-control, .form-select, textarea,
+input[type="text"], input[type="number"], input[type="email"], input[type="password"], input[type="file"], input[type="url"], input[type="date"], input[type="color"] {
+  color: var(--text-color);
+  background-color: #0f172a;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 0.75rem;
+}
+
+.form-control::placeholder, textarea::placeholder {
+  color: var(--muted-color);
+}
+
+.form-control:focus, .form-select:focus, textarea:focus,
+input[type="text"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="file"]:focus, input[type="url"]:focus, input[type="date"]:focus, input[type="color"]:focus {
+  background-color: #111827;
+  color: var(--text-color);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 0.2rem rgba(109, 40, 217, 0.25);
+}
+
+.list-group-item {
+  background-color: rgba(255,255,255,0.04);
+  color: var(--text-color);
+  border-color: rgba(255,255,255,0.08);
+}
+
+.badge {
+  background-color: var(--accent-color) !important;
+}

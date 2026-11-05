@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-3">
+<h1>Task List</h1>
+<a href="{% url 'tasks:create-task' %}">Create new task</a>
+
+<form method="get" class="form-inline mb-3">
+    {{ form.status.label_tag }} {{ form.status }}
+    {{ form.priority.label_tag }} {{ form.priority }}
+    {{ form.owner.label_tag }} {{ form.owner }}
+    <button type="submit" class="btn btn-primary ml-2">Filter</button>
+</form>
+
+<ul>
+    {% for task in tasks %}
+        <li>
+            <a href="{% url 'tasks:task-detail' pk=task.pk %}">{{ task.title }}</a>
+            {{ task.status }} {{ task.priority }}
+        </li>
+    {% empty %}
+        <li>You have no tasks</li>
+    {% endfor %}
+</ul>
+</div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card shadow-sm p-4">
+    <h1>Коллекция карт DnD</h1>
+    <p>Сохраняй карты, предметы, персонажей, магию и легендарные находки для будущих приключений.</p>
+    <a href="{% url 'tasks:anime-page-create' %}" class="btn btn-primary mb-3">Добавить запись</a>
+
+    <form method="get" class="row g-2 mb-3">
+        <div class="col-md-3">
+            <select name="status" class="form-select">
+                <option value="">Все статусы</option>
+                <option value="card" {% if status == 'card' %}selected{% endif %}>Карта</option>
+                <option value="item" {% if status == 'item' %}selected{% endif %}>Предмет</option>
+                <option value="character" {% if status == 'character' %}selected{% endif %}>Персонаж</option>
+                <option value="magic" {% if status == 'magic' %}selected{% endif %}>Магия</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <input type="number" name="rating_min" min="1" max="100" class="form-control" placeholder="Оценка от" value="{{ rating_min }}">
+        </div>
+        <div class="col-md-2">
+            <select name="sort_by" class="form-select">
+                <option value="title" {% if sort_by == 'title' %}selected{% endif %}>По названию</option>
+                <option value="year" {% if sort_by == 'year' %}selected{% endif %}>По году</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <select name="sort_dir" class="form-select">
+                <option value="asc" {% if sort_dir == 'asc' %}selected{% endif %}>По возрастанию</option>
+                <option value="desc" {% if sort_dir == 'desc' %}selected{% endif %}>По убыванию</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-outline-secondary w-100">Фильтр</button>
+        </div>
+    </form>
+
+    <ul class="list-group">
+        {% for anime in anime %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <a href="{% url 'tasks:anime-page-detail' pk=anime.pk %}">{{ anime.title }}</a> — {{ anime.author }}
+                    <span class="badge bg-secondary ms-2">{{ anime.get_status_display }}</span>
+                    {% if anime.rating %}
+                        <span class="badge bg-secondary ms-2">{{ anime.rating }} / {{ anime.rating_scale }}</span>
+                    {% endif %}
+                    {% if anime.tags %}
+                        <span class="badge bg-light text-dark ms-2">{{ anime.tags }}</span>
+                    {% endif %}
+                </div>
+                <span class="badge bg-light text-dark">{{ anime.get_status_display }}</span>
+            </li>
+        {% empty %}
+            <li class="list-group-item">Пока нет карт в коллекции.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card shadow-sm p-4">
+    <h1>{{ anime.title }}</h1>
+    <p><strong>Создатель:</strong> {{ anime.author }}</p>
+    <p><strong>Год выхода:</strong> {{ anime.year }}</p>
+    <p><strong>Тип:</strong> {{ anime.get_status_display }}</p>
+    <p><strong>Оценка:</strong>
+        {% if anime.rating %}
+            {{ anime.rating }} / {{ anime.rating_scale }}
+        {% else %}
+            не указана
+        {% endif %}
+    </p>
+    <p><strong>Описание:</strong> {{ anime.description }}</p>
+    {% if anime.tags %}
+        <p><strong>Теги:</strong> {{ anime.tags }}</p>
+    {% endif %}
+    {% if anime.cover_image %}
+        <img src="{{ anime.cover_image.url }}" alt="{{ anime.title }}" class="img-fluid rounded mt-3" style="max-height: 280px;">
+    {% elif anime.cover_url %}
+        <p><strong>Изображение:</strong> <a href="{{ anime.cover_url }}" target="_blank">ссылка</a></p>
+    {% endif %}
+    <a href="{% url 'tasks:anime-page-update' pk=anime.pk %}" class="btn btn-warning">Редактировать</a>
+    <a href="{% url 'tasks:anime-page-delete' pk=anime.pk %}" class="btn btn-danger">Удалить</a>
+    <a href="{% url 'tasks:anime-page-list' %}" class="btn btn-secondary">Назад</a>
+</div>
+{% endblock %}
